@@ -1,0 +1,36 @@
+---
+import type { MembroPlaceholder } from "../data/team";
+interface Props { membro: MembroPlaceholder; }
+const { membro } = Astro.props;
+---
+<article class="scheda">
+  <div class="scheda__ritratto"><span>Ritratto<br />da inserire</span></div>
+  <h3>[Nome Cognome]</h3>
+  <p class="scheda__ruolo">{membro.ruoloGenerico}</p>
+  <dl class="scheda__dati">
+    {membro.campi.map((campo) => (
+      <>
+        <dt>{campo.etichetta}</dt>
+        <dd>{campo.valore}</dd>
+      </>
+    ))}
+  </dl>
+</article>
+
+<style>
+  .scheda { background: var(--carta); border: 1px solid var(--teal-600); border-radius: var(--radius); padding: 1.25rem; }
+  .scheda__ritratto {
+    aspect-ratio: 4/5; margin-bottom: 1rem;
+    border: 1px dashed var(--vermiglio);
+    display: grid; place-items: center; text-align: center;
+    background: var(--carta-riga);
+    padding: 1rem; border-radius: var(--radius);
+  }
+  .scheda__ritratto span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--vermiglio-scuro); line-height: 1.6; }
+  .scheda h3 { font-size: 1.1875rem; margin-bottom: 0.25em; color: var(--inchiostro); }
+  .scheda__ruolo { font-size: 0.8125rem; color: var(--vermiglio-scuro); font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.6em; }
+  .scheda__dati { margin: 0.9rem 0 0; font-size: 0.8125rem; }
+  .scheda__dati dt { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-800); margin-top: 0.85em; }
+  .scheda__dati dt:first-child { margin-top: 0; }
+  .scheda__dati dd { margin: 0.2em 0 0; color: var(--grigio-testo); line-height: 1.55; }
+</style>

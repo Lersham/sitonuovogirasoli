@@ -1,0 +1,43 @@
+---
+import { site } from "../data/site";
+const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.3221574655886!2d${site.geo.lon}!3d${site.geo.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f5fd9b80c7df1%3A0x9f6c73f65287e94d!2sAPS%20Gira.soli!5e0!3m2!1sit!2sit!4v1724160784856!5m2!1sit!2sit`;
+const mapsSearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.indirizzo.via}, ${site.indirizzo.cap} ${site.indirizzo.citta}`)}`;
+---
+<div class="mappa mappa--sospesa" id="mappa" data-src={mapSrc}>
+  <div class="mappa__gate">
+    <p class="mappa__nota">
+      La mappa è servita da Google. Caricandola, il tuo browser si collega ai
+      loro server e comunica il tuo indirizzo IP.
+    </p>
+    <button type="button" class="azione azione--secondaria" id="caricaMappa">Carica la mappa</button>
+    <p class="mappa__alt">
+      <a href={mapsSearch} target="_blank" rel="noopener noreferrer">Apri l'indirizzo in Maps</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("caricaMappa");
+  btn?.addEventListener("click", () => {
+    const box = document.getElementById("mappa");
+    if (!box) return;
+    const f = document.createElement("iframe");
+    f.src = box.dataset.src ?? "";
+    f.loading = "lazy";
+    f.referrerPolicy = "no-referrer-when-downgrade";
+    f.title = "Mappa con la posizione di APS Gira.Soli";
+    box.textContent = "";
+    box.classList.remove("mappa--sospesa");
+    box.appendChild(f);
+  });
+</script>
+
+<style>
+  .mappa { border: 1px solid var(--teal-600); border-radius: var(--radius); aspect-ratio: 4/3; width: 100%; overflow: hidden; }
+  .mappa iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .mappa--sospesa { background: var(--carta-riga); display: grid; place-items: center; padding: 1.5rem; text-align: center; }
+  .mappa__gate { max-width: 36ch; display: grid; gap: 1rem; justify-items: center; }
+  .mappa__nota { font-size: 0.875rem; color: var(--grigio-testo); margin: 0; }
+  .mappa__alt { margin: 0; font-size: 0.875rem; }
+  .mappa__alt a { display: inline-block; padding-block: 0.55em; min-height: 24px; }
+</style>

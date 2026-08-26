@@ -1,0 +1,99 @@
+---
+const ragioni = [
+  {
+    guida: true,
+    titolo: "Un'unica équipe, dalla diagnosi al trattamento",
+    testo:
+      "Valutazione, neuropsichiatria infantile, riabilitazione, psicomotricità, sostegno psicologico e parent training stanno nello stesso centro. Chi ha valutato tuo figlio parla direttamente con chi lo tratta: non devi essere tu a fare da tramite.",
+  },
+  {
+    titolo: "Il percorso si costruisce sul singolo bambino",
+    testo:
+      "Ogni intervento parte da un profilo di sviluppo ricavato con strumenti standardizzati, non da un protocollo uguale per tutti. È la ragione per cui non possiamo dirti in anticipo quante sedute serviranno.",
+  },
+  {
+    titolo: "Il lavoro continua in classe",
+    testo:
+      "Incontriamo insegnanti e referenti scolastici perché le strategie funzionino dove tuo figlio passa le sue giornate. Un metodo che vale solo dentro il nostro studio ha risolto metà del problema.",
+  },
+  {
+    titolo: "Prendiamo in carico la famiglia, non solo il bambino",
+    testo:
+      "Il parent training e il sostegno ai genitori non sono servizi accessori: sono parte del percorso. Chi gestisce un comportamento difficile ogni giorno siete voi, non noi.",
+  },
+];
+---
+<section class="sez sez--carta" id="perche">
+  <div class="wrap">
+    <div class="sez__testa">
+      <h2>Perché un centro solo invece di quattro professionisti sparsi.</h2>
+      <p class="sez__intro">
+        Quando una difficoltà viene segnalata dalla scuola, il rischio è passare
+        mesi a ricomporre un percorso: una valutazione qui, un trattamento là, e
+        nessuno che parli con nessun altro. Il nostro lavoro è tenere insieme i pezzi.
+      </p>
+    </div>
+
+    <div class="accreditamento">
+      <h3>Che cosa vuol dire essere «accreditati dalla Regione Lazio»</h3>
+      <p>
+        Vuol dire che la Regione ci ha autorizzati a rilasciare le certificazioni
+        delle valutazioni del neurosviluppo. È una differenza pratica, non una
+        formalità: il documento che vi consegniamo alla fine della valutazione la
+        scuola lo accetta, e vale ai fini di legge.
+      </p>
+      <p>
+        È la domanda che quasi nessun genitore sa di dover fare, e che conta più di
+        tutte: molte valutazioni fatte in studi non accreditati vanno poi rifatte
+        altrove per ottenere un documento spendibile. Con noi non accade.
+      </p>
+      <p class="accreditamento__nota">
+        <strong>Da completare prima della pubblicazione:</strong> qui va inserito il
+        riferimento esatto dell'accreditamento — estremi del provvedimento regionale
+        e ambito coperto. È un'affermazione regolamentata: va riportata come risulta
+        dal documento, non parafrasata.
+      </p>
+    </div>
+
+    <ol class="ragioni">
+      {ragioni.map((r) => (
+        <li class:list={["ragione", { "ragione--guida": r.guida }]}>
+          <h3>{r.titolo}</h3>
+          <p>{r.testo}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .accreditamento {
+    background: var(--bianco);
+    border: 1px solid var(--teal-800);
+    border-radius: var(--radius);
+    box-shadow: var(--ombra-lieve);
+    padding: clamp(1.5rem, 3.2vw, 2.25rem);
+    margin-bottom: var(--spazio-5);
+    max-width: 78ch;
+  }
+  .accreditamento h3 { font-size: clamp(1.375rem, 2.4vw, 1.75rem); margin-bottom: 0.7em; }
+  .accreditamento p { font-size: 0.9375rem; color: var(--grigio-testo); max-width: 64ch; }
+  .accreditamento__nota {
+    margin: 1.2rem 0 0; padding-top: 0.9rem;
+    border-top: 1px dashed var(--vermiglio);
+    font-size: 0.8125rem;
+  }
+  .accreditamento__nota strong { color: var(--vermiglio-scuro); }
+
+  .ragioni { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spazio-4) clamp(2rem, 4vw, var(--spazio-5)); grid-template-columns: 1fr; }
+  @media (min-width: 860px) {
+    .ragioni { grid-template-columns: repeat(3, 1fr); }
+    .ragione--guida { grid-column: 1 / -1; padding-bottom: var(--spazio-3); border-bottom: 1px solid var(--carta-riga); }
+  }
+  .ragione { border-top: 3px solid var(--teal-600); padding-top: 1.3rem; }
+  .ragione--guida { border-top-color: var(--vermiglio); }
+  .ragione h3 { font-size: 1.1875rem; margin: 0 0 0.6em; }
+  .ragione--guida h3 { font-size: clamp(1.5rem, 3vw, 2.125rem); max-width: 30ch; }
+  .ragione p { font-size: 0.9375rem; color: var(--grigio-testo); max-width: 48ch; }
+  .ragione--guida p { font-size: 1.0625rem; max-width: 62ch; }
+</style>

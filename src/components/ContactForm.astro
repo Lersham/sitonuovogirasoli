@@ -1,0 +1,63 @@
+---
+import { site } from "../data/site";
+---
+<h3 class="modulo__titolo">Oppure scrivici</h3>
+<form class="modulo" action={site.formspreeAction} method="POST">
+  <div class="campo">
+    <label for="nome">Nome <span class="req" aria-hidden="true">*</span></label>
+    <input type="text" id="nome" name="name" autocomplete="name" required />
+  </div>
+  <div class="campo">
+    <label for="tel">Telefono <span class="req" aria-hidden="true">*</span></label>
+    <input type="tel" id="tel" name="phone" autocomplete="tel" required placeholder="328 000 00 00" pattern="[0-9+()\s.-]{6,}" />
+    <span class="campo__errore">Serve un numero su cui possiamo richiamarvi.</span>
+  </div>
+  <div class="campo">
+    <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+    <input type="email" id="email" name="email" autocomplete="email" required placeholder="nome@esempio.it" />
+    <span class="campo__errore">Controllate l'indirizzo: manca la @ o il dominio.</span>
+  </div>
+  <div class="campo">
+    <label for="messaggio">Cosa vi preoccupa, in breve</label>
+    <textarea id="messaggio" name="message" placeholder="Non serve usare termini tecnici: bastano le cose che avete notato."></textarea>
+  </div>
+  <div class="privacy">
+    <input type="checkbox" id="privacy" name="privacy" required />
+    <label for="privacy">
+      Ho preso visione dell'<a href="/privacy">informativa privacy</a>
+      (art. 13 Reg. UE 2016/679)
+      <span class="req" aria-hidden="true">*</span>
+    </label>
+  </div>
+  <p class="modulo__nota">
+    Rispondiamo negli orari di studio, di norma entro un giorno lavorativo.
+    Se la cosa è urgente, il telefono resta la via più rapida.
+  </p>
+  <div>
+    <button type="submit" class="azione azione--secondaria">
+      Invia la richiesta
+      <svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8" /></svg>
+    </button>
+  </div>
+</form>
+
+<style>
+  .modulo__titolo { font-size: 1.375rem; margin-bottom: 1rem; color: var(--inchiostro); }
+  .modulo { display: grid; gap: 1.1rem; }
+  .campo { display: grid; gap: 0.35rem; }
+  .campo label { font-size: 0.8125rem; font-weight: 700; color: var(--grigio-testo); }
+  .campo .req { color: var(--vermiglio); }
+  .campo input, .campo textarea {
+    font-family: var(--font); font-size: 1rem; color: var(--inchiostro);
+    background: #fff; border: 1px solid var(--teal-600);
+    padding: 0.75em 0.85em; width: 100%; min-height: 48px; border-radius: var(--radius);
+  }
+  .campo textarea { min-height: 130px; resize: vertical; }
+  .campo input:focus, .campo textarea:focus { border-color: var(--teal-800); }
+  .campo input:not(:placeholder-shown):invalid { border-color: var(--vermiglio); border-width: 2px; }
+  .campo__errore { display: none; font-size: 0.8125rem; color: var(--vermiglio-scuro); font-weight: 700; }
+  .campo input:not(:placeholder-shown):invalid ~ .campo__errore { display: block; }
+  .modulo__nota { font-size: 0.8125rem; color: var(--grigio-testo); margin: 0; padding-top: 0.9rem; border-top: 1px solid var(--carta-riga); }
+  .privacy { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.875rem; }
+  .privacy input { width: 26px; height: 26px; margin-top: 0.1em; flex-shrink: 0; accent-color: var(--teal-800); }
+</style>

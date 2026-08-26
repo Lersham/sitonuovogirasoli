@@ -1,0 +1,56 @@
+---
+import { site } from "../data/site";
+---
+<footer class="piede">
+  <div class="wrap">
+    <div class="piede__grid">
+      <div>
+        <p class="piede__nome">{site.nomeCompleto}</p>
+        <p class="piede__testo">
+          {site.tagline}<br />
+          {site.indirizzo.via}, {site.indirizzo.cap} {site.indirizzo.citta}
+        </p>
+      </div>
+      <div>
+        <p class="etichetta etichetta--chiara piede__titolo">Contatti</p>
+        <p class="piede__testo">
+          <a href={`tel:${site.telefonoE164}`}>{site.telefono}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a><br />
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+        </p>
+      </div>
+      <div>
+        <p class="etichetta etichetta--chiara piede__titolo">Pagina</p>
+        <p class="piede__testo">
+          <a href="#perche">Perché noi</a><br />
+          <a href="#percorso">Il percorso</a><br />
+          <a href="#servizi">I nove servizi</a><br />
+          <a href="#equipe">L'équipe</a><br />
+          <a href="/privacy">Informativa privacy</a>
+        </p>
+      </div>
+    </div>
+    <div class="piede__filetto">
+      <span>© <span id="anno">2026</span> {site.nomeCompleto}</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const anno = document.getElementById("anno");
+  if (anno) anno.textContent = String(new Date().getFullYear());
+</script>
+
+<style>
+  .piede { background: var(--teal-900); color: var(--teal-100); padding-block: 2.5rem; font-size: 0.875rem; }
+  .piede__grid { display: flex; flex-wrap: wrap; gap: 1.25rem 2.5rem; justify-content: space-between; align-items: flex-start; }
+  .piede__nome { font-size: 1.25rem; font-weight: 800; color: #fff; margin: 0 0 0.3em; }
+  .piede__testo { margin: 0; }
+  .piede a { color: var(--carta); display: inline-block; padding-block: 0.4em; }
+  .piede__titolo { margin-bottom: 0.6em; }
+  .piede__filetto {
+    margin-top: 1.75rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--teal-700);
+    font-size: 0.75rem; color: var(--teal-100);
+  }
+</style>

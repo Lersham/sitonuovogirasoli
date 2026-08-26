@@ -1,0 +1,47 @@
+---
+import { team } from "../data/team";
+import SchedaMembro from "./SchedaMembro.astro";
+---
+<section class="sez sez--media" id="equipe">
+  <div class="wrap">
+    <div class="sez__testa">
+      <h2>Chi seguirà tuo figlio, con nome e cognome.</h2>
+      <p class="sez__intro">
+        Siamo psicologi, psicoterapeuti, pedagogisti, un medico neuropsichiatra e una
+        psicomotricista. Lavoriamo nello stesso centro e ci parliamo sul singolo caso:
+        è la ragione per cui non dovete ricomporre il percorso da soli.
+      </p>
+    </div>
+
+    <div class="equipe">
+      {team.map((membro) => <SchedaMembro membro={membro} />)}
+    </div>
+
+    <div class="segnaposto-largo">
+      <p><strong>Sezione da completare — è la più importante della pagina.</strong>
+        Nomi, ruoli, iscrizioni, formazione e ritratti sono segnaposto e vanno
+        sostituiti con i dati reali prima della pubblicazione. Nessuno di questi
+        campi va inventato.</p>
+      <p>Una nota su cosa scrivere: per un genitore
+        «Psicologa, iscritta all'albo» dice molto poco. Dice molto invece
+        <em>dove</em> si è formata la persona, e <em>di cosa si occupa
+        specificamente</em> — perché è così che un genitore capisce se avete già
+        visto un caso come quello di suo figlio.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipe { display: grid; gap: clamp(1.5rem, 3vw, var(--spazio-4)); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .equipe { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .equipe { grid-template-columns: repeat(3, 1fr); } }
+
+  .segnaposto-largo {
+    margin-top: var(--spazio-4); max-width: 74ch;
+    border: 1px dashed var(--senape);
+    background: var(--teal-800);
+    padding: 1.1rem 1.25rem; border-radius: var(--radius);
+    font-size: 0.9375rem;
+  }
+  .segnaposto-largo strong { color: var(--senape); }
+</style>

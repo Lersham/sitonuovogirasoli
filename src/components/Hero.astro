@@ -1,0 +1,132 @@
+---
+---
+<section class="apertura" id="apertura">
+  <div class="wrap apertura__grid">
+    <div>
+      <h1>Capire cosa sta accadendo a tuo figlio, <em>in un'unica cartella.</em></h1>
+      <p class="apertura__sommario">
+        Valutazione, neuropsichiatria infantile, riabilitazione, psicomotricità, sostegno
+        psicologico e supporto ai genitori: a Roma, in zona Selva Candida, un'unica équipe
+        segue il percorso dall'inizio alla fine e parla direttamente con la scuola.
+      </p>
+      <div class="apertura__azioni">
+        <a class="azione" href="#contatti">
+          Prenota il primo colloquio
+          <svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8" /></svg>
+        </a>
+        <a class="azione-sec" href="#servizi">Guarda i nove servizi</a>
+      </div>
+      <div class="timbro">
+        <p class="timbro__et">Accreditamento</p>
+        <p class="timbro__testo">
+          Siamo <strong>accreditati dalla Regione Lazio</strong> per rilasciare le
+          certificazioni delle valutazioni del neurosviluppo. La certificazione che
+          ricevete alla fine del percorso è valida a scuola e ai fini di legge:
+          non dovrete rifarla altrove.
+        </p>
+      </div>
+      <p class="apertura__nota">
+        Il primo incontro serve ad ascoltare e a capire se e come possiamo essere utili.
+        Nessun percorso comincia prima di averne parlato.
+      </p>
+    </div>
+
+    <div class="vetrina">
+      <img class="vetrina__logo" src="/assets/logo-lockup-300.png" alt="Gira.Soli, Centro Psicologico — il girasole il cui contorno si fonde con il profilo di un bambino" width="220" height="249" />
+      <p class="vetrina__didascalia">
+        Il girasole è <em>eliotropo</em>: da giovane orienta il capolino verso la luce e la
+        segue durante il giorno. Non cresce più in fretta di altre piante — sa dove
+        guardare. È il lavoro che facciamo con ogni bambino.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .apertura {
+    background: var(--teal-800);
+    color: var(--carta);
+    /* Il primo schermo è il momento più generoso della pagina: le sezioni
+       che seguono respirano meno, non tutte uguale. */
+    padding-block: clamp(3.5rem, 10vw, var(--spazio-6));
+    position: relative;
+    overflow: hidden;
+  }
+  .apertura__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, var(--spazio-5));
+    /* "start", non "center": la colonna di testo è alta (titolo + CTA +
+       timbro + nota) — centrare la vetrina contro tutta quell'altezza la
+       spinge visivamente in basso, lontano dal titolo con cui deve
+       dialogare. */
+    align-items: start;
+  }
+  @media (min-width: 860px) { .apertura__grid { grid-template-columns: 1.1fr 0.9fr; } }
+
+  .apertura h1 {
+    color: var(--carta);
+    font-size: clamp(2.3rem, 6.6vw, 4.8rem);
+    line-height: 1.05;
+    margin-block: 0 0.42em;
+    text-wrap: balance;
+  }
+  .apertura h1 em { font-style: italic; color: var(--senape); font-weight: 500; }
+  .apertura__sommario { font-size: clamp(1.0625rem, 1.9vw, 1.25rem); color: #dcecea; max-width: 52ch; margin-bottom: 1.9em; }
+  .apertura__azioni { display: flex; flex-wrap: wrap; gap: 1.1rem 1.6rem; align-items: center; }
+
+  .azione-sec {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9375rem; font-weight: 700; color: var(--carta);
+    text-decoration: none; border-bottom: 1px solid var(--teal-600);
+    padding-block: 0.35em; min-height: 44px;
+  }
+  .azione-sec:hover { color: #fff; border-color: var(--carta); }
+
+  .timbro { margin-top: var(--spazio-4); max-width: 52ch; border: 1px solid var(--teal-100); border-radius: var(--radius); padding: 1.15rem 1.3rem; }
+  .timbro__et { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--carta); margin: 0 0 0.5em; }
+  .timbro__testo { font-size: 0.9375rem; color: #dcecea; margin: 0; }
+  .timbro__testo strong { color: var(--carta); }
+
+  .apertura__nota { margin-top: var(--spazio-3); padding-top: 1.1em; border-top: 1px solid var(--teal-700); font-size: 0.875rem; color: var(--teal-100); max-width: 46ch; }
+
+  /* ---- la vetrina: il logo, il vero simbolo caldo del centro, non un'icona
+     di dossier astratta — è ciò che il genitore riconoscerà su un citofono
+     o un depliant, e per questo merita spazio e luce, non un contenitore
+     istituzionale. ---- */
+  .vetrina {
+    background: radial-gradient(ellipse at 50% 38%, #fbf0d8 0%, var(--carta-calda) 62%);
+    color: var(--inchiostro);
+    border-radius: var(--radius);
+    box-shadow: var(--ombra-alzata);
+    padding: var(--spazio-5) var(--spazio-4);
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: var(--spazio-4);
+  }
+  .vetrina__logo {
+    width: clamp(180px, 22vw, 240px);
+    height: auto;
+    filter: drop-shadow(0 10px 18px rgba(11, 32, 39, 0.12));
+  }
+  .vetrina__didascalia {
+    font-size: 0.9375rem; font-style: italic; color: var(--grigio-testo);
+    max-width: 34ch; margin: 0; line-height: 1.6;
+  }
+  .vetrina__didascalia em { color: var(--vermiglio-scuro); font-style: italic; }
+
+  /* ---- unico momento d'autore: il girasole si volge verso la luce, una
+     volta, all'apertura della pagina — non un loop, un gesto. ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .vetrina__logo {
+      animation: verso-la-luce 900ms cubic-bezier(.16,1,.3,1) both;
+      animation-delay: 150ms;
+    }
+    @keyframes verso-la-luce {
+      from { opacity: 0; transform: translateY(10px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  }
+</style>

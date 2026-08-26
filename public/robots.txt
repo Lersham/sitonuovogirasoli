@@ -1,0 +1,19 @@
+# robots.txt per Gira.Soli - Centro per l'età evolutiva
+
+User-agent: *
+Allow: /
+
+# Sitemap (generata automaticamente da @astrojs/sitemap ad ogni build)
+Sitemap: https://gira-soli.it/sitemap-index.xml
+
+# Crawl-delay ottimizzato
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /

@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Informativa privacy — Gira.Soli"
+  description="Informativa sul trattamento dei dati personali ai sensi dell'art. 13 del Regolamento UE 2016/679, per i contatti raccolti tramite il sito di APS Gira.Soli."
+  noindex
+  includeJsonLd={false}
+>
+  <div class="wrap">
+    <div class="foglio">
+      <p class="etichetta">APS Gira.Soli</p>
+      <h1>Informativa sul trattamento dei dati personali</h1>
+      <p>Ai sensi dell'art. 13 del Regolamento (UE) 2016/679 — GDPR.</p>
+
+      <div class="bozza">
+        <p><strong>Questa è una bozza, non un documento valido.</strong></p>
+        <p>
+          È stata scritta partendo dai dati che il modulo di contatto del sito raccoglie
+          effettivamente, e dagli strumenti che il sito usa davvero. Prima di pubblicarla
+          deve essere <strong>verificata e approvata da chi si occupa della privacy
+          dell'associazione</strong>: contiene scelte (tempi di conservazione, base
+          giuridica, titolare) che solo l'associazione può stabilire.
+        </p>
+        <p>
+          Le parti evidenziate così — <span class="dato-mancante">[da completare]</span> —
+          sono dati che non possono essere inventati e vanno inseriti prima della pubblicazione.
+        </p>
+      </div>
+
+      <h2>1. Titolare del trattamento</h2>
+      <p>
+        APS Gira.Soli, con sede in {site.indirizzo.via}, {site.indirizzo.cap} {site.indirizzo.citta}.<br />
+        Codice fiscale / P. IVA: <span class="dato-mancante">[da completare]</span><br />
+        Legale rappresentante: <span class="dato-mancante">[nome del legale rappresentante]</span><br />
+        Email di contatto per la privacy:
+        <span class="dato-mancante">[indirizzo email dedicato, o {site.email} se si sceglie quello]</span><br />
+        Telefono: <a href={`tel:${site.telefonoE164}`}>{site.telefono}</a>
+      </p>
+      <p>
+        Responsabile della protezione dei dati (DPO):
+        <span class="dato-mancante">
+          [indicare se nominato; per un'associazione di queste dimensioni di norma non è
+          obbligatorio, ma va verificato in relazione al trattamento di dati sanitari]
+        </span>
+      </p>
+
+      <h2>2. Quali dati raccogliamo da questo sito</h2>
+      <p>
+        Il sito è composto da pagine statiche. Non usa cookie di profilazione, non ha
+        sistemi di analisi del traffico e non crea profili degli utenti.
+      </p>
+      <table>
+        <thead>
+          <tr><th scope="col">Dato</th><th scope="col">Dove</th><th scope="col">Obbligatorio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nome</td><td>Modulo di contatto</td><td>Sì</td></tr>
+          <tr><td>Numero di telefono</td><td>Modulo di contatto</td><td>Sì</td></tr>
+          <tr><td>Indirizzo email</td><td>Modulo di contatto</td><td>Sì</td></tr>
+          <tr><td>Testo del messaggio</td><td>Modulo di contatto</td><td>No</td></tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Un avvertimento importante.</strong> Il campo del messaggio è libero: se vi
+        scrivete informazioni sulla salute di vostro figlio, quelle sono <em>dati relativi
+        alla salute</em> (art. 9 GDPR), cioè una categoria particolare che richiede tutele
+        più forti. Vi chiediamo di <strong>non inserire dettagli clinici nel modulo</strong>:
+        per quelli è meglio il telefono o il primo colloquio. Nel modulo basta dirci che
+        volete essere ricontattati.
+      </p>
+
+      <h2>3. Perché li trattiamo e con quale base giuridica</h2>
+      <dl>
+        <dt>Finalità</dt>
+        <dd>Rispondere alla vostra richiesta di contatto e, se lo desiderate, fissare un primo colloquio conoscitivo.</dd>
+        <dt>Base giuridica</dt>
+        <dd>Il vostro consenso, che prestate spuntando la casella nel modulo (art. 6.1.a GDPR), e l'esecuzione delle misure precontrattuali che richiedete (art. 6.1.b).</dd>
+        <dt>Conseguenze del rifiuto</dt>
+        <dd>Senza i dati contrassegnati come obbligatori non possiamo ricontattarvi. Potete sempre chiamarci o scriverci direttamente per email, senza usare il modulo.</dd>
+      </dl>
+      <p>
+        I dati raccolti dal modulo <strong>non vengono usati per invii promozionali</strong>,
+        non vengono ceduti e non vengono venduti a nessuno.
+      </p>
+
+      <h2>4. Chi tratta i dati per conto nostro</h2>
+      <p>
+        Per far funzionare il sito ci appoggiamo a fornitori esterni, che trattano i dati
+        come responsabili del trattamento o come titolari autonomi:
+      </p>
+      <table>
+        <thead>
+          <tr><th scope="col">Fornitore</th><th scope="col">A cosa serve</th><th scope="col">Dove</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Formspree, Inc.</td><td>Riceve l'invio del modulo e ce lo inoltra per email</td><td>Stati Uniti — trasferimento extra-UE</td></tr>
+          <tr><td>IONOS</td><td>Server su cui il sito è ospitato; registra gli accessi tecnici</td><td>Unione Europea</td></tr>
+          <tr><td>Google Ireland Ltd.</td><td>Mappa della sede e caratteri tipografici della pagina</td><td>UE, con possibili trasferimenti negli USA</td></tr>
+        </tbody>
+      </table>
+      <p>
+        La mappa Google nella pagina dei contatti <strong>non viene caricata
+        automaticamente</strong>: resta un segnaposto finché non la attivate voi con un
+        clic. Fino a quel momento Google non riceve nulla dal vostro browser.
+      </p>
+      <p>
+        Per i trasferimenti verso gli Stati Uniti i fornitori dichiarano di adottare le
+        garanzie previste dal Capo V del GDPR.
+        <span class="dato-mancante">[verificare le clausole contrattuali standard applicate da Formspree e la relativa documentazione]</span>
+      </p>
+
+      <h2>5. Per quanto tempo li conserviamo</h2>
+      <p>
+        <span class="dato-mancante">[Da stabilire dall'associazione.]</span> Una scelta
+        ragionevole e proporzionata sarebbe: i messaggi che non portano a una presa in
+        carico vengono cancellati entro <strong>12 mesi</strong> dall'ultimo contatto; se
+        invece inizia un percorso, i dati passano nella documentazione clinica, che segue i
+        propri obblighi di conservazione previsti dalla normativa sanitaria.
+      </p>
+
+      <h2>6. I vostri diritti</h2>
+      <p>
+        In qualsiasi momento potete chiedere di: accedere ai vostri dati (art. 15),
+        correggerli (art. 16), cancellarli (art. 17), limitarne il trattamento (art. 18),
+        riceverli in formato leggibile da una macchina (art. 20) e opporvi al trattamento
+        (art. 21). Se il trattamento si basa sul consenso, potete <strong>revocarlo quando volete</strong>,
+        senza che questo tolga validità a quanto fatto prima.
+      </p>
+      <p>
+        Per esercitarli basta scrivere all'indirizzo indicato al punto 1. Vi rispondiamo entro un mese.
+      </p>
+      <p>
+        Se ritenete che il trattamento non rispetti il Regolamento, potete rivolgervi al
+        <strong>Garante per la protezione dei dati personali</strong>
+        (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">garanteprivacy.it</a>)
+        oppure all'autorità giudiziaria.
+      </p>
+
+      <h2>7. Aggiornamenti</h2>
+      <p>
+        Questa informativa può essere aggiornata. La versione pubblicata su questa pagina è sempre quella in vigore.<br />
+        Ultimo aggiornamento: <span class="dato-mancante">[data di approvazione]</span>
+      </p>
+
+      <a class="ritorno" href="/">Torna al sito <span aria-hidden="true" class="freccia">→</span></a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap { width: 100%; max-width: 760px; margin-inline: auto; padding-inline: clamp(1.1rem, 4vw, 2.5rem); }
+  .foglio { background: var(--bianco); border: 1px solid var(--teal-800); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 3rem); margin-block: clamp(1.5rem, 4vw, 3rem); }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); margin-bottom: 0.5em; text-wrap: balance; }
+  h2 { font-size: clamp(1.25rem, 2.6vw, 1.5rem); margin: 2.2em 0 0.6em; }
+  ul { padding-left: 1.15em; }
+  li { margin-bottom: 0.4em; }
+  li::marker { color: var(--vermiglio); }
+  dt { font-weight: 700; margin-top: 0.9em; }
+  dd { margin: 0 0 0.3em; }
+  .dato-mancante { background: var(--carta-riga); border-bottom: 1px dashed var(--vermiglio); padding: 0 0.2em; font-weight: 700; }
+  .bozza { border: 1px dashed var(--vermiglio); background: var(--carta); padding: 1.15rem 1.3rem; margin-bottom: 2.5rem; font-size: 0.9375rem; border-radius: var(--radius); }
+  .bozza strong { color: var(--vermiglio-scuro); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin-bottom: 1.4em; }
+  th, td { text-align: left; padding: 0.6em 0.5em; border-bottom: 1px solid var(--carta-riga); vertical-align: top; }
+  th { font-weight: 700; color: var(--teal-800); }
+  .ritorno {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--vermiglio); color: #fff; font-weight: 700; text-decoration: none;
+    padding: 0.85em 1.4em; border-radius: var(--radius);
+    min-height: 48px; margin-top: 1.5rem;
+  }
+  .ritorno:hover { background: var(--vermiglio-scuro); color: #fff; }
+</style>

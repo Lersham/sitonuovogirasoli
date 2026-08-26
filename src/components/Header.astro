@@ -1,0 +1,80 @@
+---
+import { site } from "../data/site";
+---
+<header class="testata">
+  <div class="wrap testata__inner">
+    <a class="marchio" href="#apertura" aria-label={`${site.nome}, torna all'inizio`}>
+      <img src="/assets/logo-lockup-300.png" alt="" width="72" height="81" aria-hidden="true" />
+      <span class="marchio__testo">
+        <span class="marchio__nome">{site.nome}</span>
+        <span class="marchio__sotto">Centro Psicologico</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="#perche">Perché noi</a>
+      <a href="#percorso">Il percorso</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#equipe">Chi siamo</a>
+      <a href="#contatti">Dove siamo</a>
+      <a class="azione azione--compatta" href="#contatti">
+        Primo colloquio
+        <svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8" /></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .testata {
+    background: var(--carta);
+    border-bottom: 3px solid var(--teal-800);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .testata__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-block: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .marchio {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .marchio img { height: 68px; width: auto; }
+  .marchio__testo { display: flex; flex-direction: column; line-height: 1.05; }
+  .marchio__nome { font-size: 1.3rem; font-weight: 800; color: var(--teal-800); letter-spacing: -0.01em; }
+  .marchio__sotto {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--vermiglio); font-weight: 700; margin-top: 0.2em;
+  }
+  .nav { display: flex; align-items: center; gap: clamp(0.85rem, 2vw, 1.75rem); flex-wrap: wrap; }
+  .nav a {
+    font-size: 0.9375rem; font-weight: 600; color: var(--teal-800);
+    text-decoration: none; position: relative;
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 9px;
+    height: 1px; background: var(--teal-800);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.18s ease;
+  }
+  .nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
+  .nav a.azione { color: #fff; }
+  .nav a.azione::after { display: none; }
+
+  @media (max-width: 759px) {
+    .nav a:not(.azione) { display: none; }
+    .testata__inner { padding-block: 0.45rem; flex-wrap: nowrap; gap: 0.75rem; }
+    .marchio img { height: 48px; }
+    .marchio { gap: 0.5rem; min-width: 0; }
+    .marchio__nome { font-size: 1.1rem; }
+    .marchio__sotto { display: none; }
+  }
+</style>

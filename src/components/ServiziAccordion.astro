@@ -1,0 +1,25 @@
+---
+import { servizi } from "../data/servizi";
+import ServizioItem from "./ServizioItem.astro";
+---
+<section class="sez sez--carta" id="servizi">
+  <div class="wrap">
+    <div class="sez__testa">
+      <h2>Nove servizi, una sola équipe.</h2>
+      <p class="sez__intro">
+        Apri una voce per leggere come funziona. Se non sai da quale partire, è
+        esattamente ciò che serve capire nel primo colloquio.
+      </p>
+    </div>
+
+    <div class="indice">
+      {servizi.map((servizio) => (
+        <ServizioItem servizio={servizio} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .indice { border-top: 1px solid var(--teal-800); }
+</style>

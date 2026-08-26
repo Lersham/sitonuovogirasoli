@@ -1,0 +1,55 @@
+---
+import { percorso } from "../data/percorso";
+---
+<section class="sez sez--scura" id="percorso">
+  <div class="wrap">
+    <div class="sez__testa">
+      <h2>Lo stesso metodo, tagliato su misura di tuo figlio.</h2>
+      <p class="sez__intro">
+        Il percorso ha quattro tappe fisse. Cosa succede dentro ciascuna, e quanto dura,
+        si decide sul profilo di sviluppo del singolo bambino: per questo le tappe
+        successive restano segnalate come da definire finché non sono state stabilite con voi.
+      </p>
+    </div>
+
+    <ol class="percorso">
+      {percorso.map((tappa) => (
+        <li class:list={["tappa", { "tappa--latente": tappa.stato === "latente" }]}>
+          <span class="tab-num">{tappa.numero}</span>
+          <h3>{tappa.nome}</h3>
+          <p>{tappa.descrizione}</p>
+          <span class="tappa__stato">{tappa.statoEtichetta}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .percorso { display: grid; gap: clamp(1.5rem, 3vw, 2.25rem); grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 760px) { .percorso { grid-template-columns: repeat(4, 1fr); } }
+
+  .tappa {
+    border-top: 3px solid var(--senape);
+    padding-top: 1.1rem;
+    background: var(--teal-800);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem 1.4rem;
+  }
+  .tappa--latente { border-top: 3px dashed var(--teal-600); background: transparent; }
+  .tab-num { font-size: 1.75rem; font-weight: 800; color: var(--senape); display: block; line-height: 1; margin-bottom: 0.35em; }
+  .tappa--latente .tab-num { color: var(--teal-600); }
+  .tappa h3 { font-size: 1.1875rem; color: var(--carta); margin-bottom: 0.5em; }
+  .tappa--latente h3 { color: var(--teal-100); }
+  .tappa p { font-size: 0.9375rem; color: #d3e3e0; margin: 0 0 0.9em; }
+  .tappa__stato {
+    display: inline-block;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; color: var(--teal-900); background: var(--senape);
+    padding: 0.35em 0.7em; border-radius: 4px;
+  }
+  .tappa--latente .tappa__stato {
+    background: none; color: var(--teal-100);
+    border: 1px dashed var(--teal-600);
+  }
+</style>

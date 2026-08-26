@@ -1,0 +1,125 @@
+---
+import "../styles/tokens.css";
+import { site } from "../data/site";
+import { servizi } from "../data/servizi";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  noindex?: boolean;
+  includeJsonLd?: boolean;
+}
+const { title, description, ogImage = "/assets/og-image.jpg", noindex = false, includeJsonLd = true } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(ogImage, Astro.site).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: site.nomeCompleto,
+  description:
+    "Centro per l'età evolutiva a Roma. Équipe multidisciplinare per la valutazione e il trattamento dei disturbi del neurosviluppo: DSA, ADHD, sostegno psicologico, parent training, neuropsichiatria infantile e psicomotricità.",
+  url: site.dominio + "/",
+  logo: new URL("/assets/logo-lockup-300.png", Astro.site).toString(),
+  telephone: site.telefonoE164,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.indirizzo.via,
+    addressLocality: site.indirizzo.citta,
+    addressRegion: site.indirizzo.provincia,
+    postalCode: site.indirizzo.cap,
+    addressCountry: site.indirizzo.paese,
+  },
+  geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lon },
+  openingHoursSpecification: site.orariSchema.map((o) => ({ "@type": "OpeningHoursSpecification", ...o })),
+  areaServed: { "@type": "City", name: "Roma" },
+  medicalSpecialty: ["Psychiatric", "Pediatric"],
+  availableService: servizi.map((s) => ({
+    "@type": s.slug === "corso-di-inglese" ? "Service" : "MedicalTherapy",
+    name: s.nome,
+  })),
+  sameAs: [site.instagram],
+};
+---
+
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content="psicologo bambini Roma, neuropsichiatria infantile Roma, psicomotricità, DSA, ADHD, parent training, tutoraggio specialistico, età evolutiva, Selva Candida, disturbi apprendimento, valutazione neuropsicologica" />
+<meta name="author" content={site.nomeCompleto} />
+<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+
+<meta name="geo.region" content="IT-RM" />
+<meta name="geo.placename" content="Roma" />
+<meta name="geo.position" content={`${site.geo.lat};${site.geo.lon}`} />
+<meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lon}`} />
+
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:site_name" content={site.nome} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<meta name="theme-color" content="#0b3d3a" />
+<link rel="icon" href="/assets/icon-192.png" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
+<link rel="manifest" href="/manifest.json" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+
+{includeJsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+</head>
+<body>
+<!--
+  DIRECTION CONTRACT
+  THESIS: Un centro non è un elenco di specialisti da tenere insieme da soli: è UNA cartella
+    con TUTTE le informazioni sotto le stesse linguette. Rifiuta sia la card pastello con la
+    foto stock del bambino sorridente, sia il registro clinico freddo e impersonale.
+  OWN-WORLD: Sistema a cartella clinica con divisori a linguetta colorata — teal profondo
+    #0B3D3A come campo dominante, vermiglio #E24E1B riservato alla sola azione primaria,
+    linguette in senape/rosa-antico/blu ardesia per le categorie di servizio, più un tocco di
+    calore illustrato (icone a tratto originali) sui servizi. Un solo carattere, Archivo.
+  STORY: Il genitore capisce che ogni professionista lavora sulla stessa cartella, non su
+    fascicoli separati; la linguetta dell'accreditamento è il timbro che rende la cartella valida.
+  FIRST VIEWPORT: campo teal; a sinistra il titolo e l'azione vermiglio; a destra la cartella
+    aperta, con le linguette dei servizi visibili sul bordo come in un dossier reale.
+  FORM: Cartella Unica — scelta dall'utente dopo confronto con 3 direzioni alternative.
+  FINISH: build in corso — parità SEO/accessibilità/PWA e migrazione contenuti da verificare.
+-->
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<Header />
+
+<main id="contenuto">
+  <slot />
+</main>
+
+<Footer />
+
+<WhatsAppButton />
+</body>
+</html>

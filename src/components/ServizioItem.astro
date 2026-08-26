@@ -1,0 +1,79 @@
+---
+import type { Servizio } from "../data/servizi";
+import IconServizio from "./IconServizio.astro";
+
+interface Props { servizio: Servizio; }
+const { servizio } = Astro.props;
+---
+<details class="servizio">
+  <summary>
+    <span class="servizio__icona"><IconServizio nome={servizio.icona} /></span>
+    <span class="servizio__blocco">
+      <h3 class="servizio__nome">{servizio.nome}</h3>
+      <span class="servizio__sommario">{servizio.sommario}</span>
+    </span>
+    <span class="servizio__segno" aria-hidden="true">
+      <svg class="ic" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10" /><path class="ic__v" d="M8 3v10" /></svg>
+    </span>
+  </summary>
+  <div class="servizio__dettaglio">
+    {servizio.placeholder && (
+      <p class="segnaposto">
+        <strong>{servizio.notaPlaceholder}</strong>
+      </p>
+    )}
+    {servizio.corpo.map((paragrafo) => <p>{paragrafo}</p>)}
+    {servizio.liste?.map((lista) => (
+      <>
+        <h4>{lista.titolo}</h4>
+        <ul>
+          {lista.voci.map((voce) => <li>{voce}</li>)}
+        </ul>
+      </>
+    ))}
+    {servizio.slug === "valutazione" && (
+      <>
+        <h4>La certificazione</h4>
+        <p>
+          Siamo accreditati dalla Regione Lazio per rilasciare le certificazioni delle
+          valutazioni del neurosviluppo: il documento finale è utilizzabile a scuola e
+          valido ai fini di legge, senza bisogno di ripetere il percorso altrove.
+        </p>
+      </>
+    )}
+  </div>
+</details>
+
+<style>
+  .servizio { border-bottom: 1px solid var(--carta-riga); }
+  .servizio > summary {
+    display: grid; grid-template-columns: 2.6rem 1fr auto;
+    gap: 1rem; align-items: center;
+    padding: 1.15rem 0.2rem; cursor: pointer; list-style: none;
+    min-height: 56px;
+  }
+  .servizio > summary::-webkit-details-marker { display: none; }
+  .servizio > summary:hover { background: var(--carta); }
+  .servizio__icona { display: flex; align-items: center; justify-content: center; }
+  .servizio__blocco { display: block; min-width: 0; }
+  .servizio__nome { font-size: clamp(1.1875rem, 2.4vw, 1.5rem); font-weight: 700; color: var(--inchiostro); line-height: 1.2; margin: 0; }
+  .servizio__sommario { display: block; font-size: 0.9375rem; font-weight: 400; color: var(--grigio-testo); margin-top: 0.35em; max-width: 62ch; line-height: 1.6; }
+  .servizio__segno { display: flex; align-items: center; height: 1.6rem; color: var(--teal-800); }
+  .servizio[open] .servizio__segno .ic__v { display: none; }
+  .servizio[open] > summary { background: var(--carta); }
+  .servizio__dettaglio { padding: 0.25rem 0.2rem 1.9rem 3.6rem; max-width: 72ch; }
+  @media (max-width: 620px) { .servizio__dettaglio { padding-left: 0.2rem; } }
+  .servizio__dettaglio h4 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vermiglio-scuro); margin: 1.6em 0 0.7em; }
+  .servizio__dettaglio ul { margin: 0 0 1.1em; padding-left: 1.1em; }
+  .servizio__dettaglio li { margin-bottom: 0.4em; }
+  .servizio__dettaglio li::marker { color: var(--vermiglio); }
+  .servizio__dettaglio p { color: var(--grigio-testo); }
+
+  .segnaposto {
+    border: 1px dashed var(--vermiglio);
+    background: var(--carta);
+    padding: 1.1rem 1.25rem; font-size: 0.9375rem; color: var(--inchiostro);
+    border-radius: var(--radius);
+  }
+  .segnaposto strong { color: var(--vermiglio-scuro); font-weight: 700; }
+</style>

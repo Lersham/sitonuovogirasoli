@@ -1,0 +1,73 @@
+---
+import { site } from "../data/site";
+import MappaGate from "./MappaGate.astro";
+import ContactForm from "./ContactForm.astro";
+---
+<section class="sez sez--chiara" id="contatti">
+  <div class="wrap">
+    <div class="sez__testa">
+      <h2>Il primo colloquio si fissa al telefono.</h2>
+      <p class="sez__intro">
+        Chiamare è il modo più rapido: rispondiamo negli orari di studio. Se preferite
+        scrivere, il messaggio arriva alla segreteria e vi ricontattiamo noi.
+      </p>
+    </div>
+
+    <div class="contatti">
+      <div>
+        <div class="dato">
+          <span class="dato__et">Telefono e WhatsApp</span>
+          <p class="dato__azione">
+            <a class="azione" href={`tel:${site.telefonoE164}`}>
+              Chiama il {site.telefono}
+              <svg class="ic" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8" /></svg>
+            </a>
+          </p>
+        </div>
+        <div class="dato">
+          <span class="dato__et">Email</span>
+          <p class="dato__val"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div class="dato">
+          <span class="dato__et">Indirizzo</span>
+          <p class="dato__val">{site.indirizzo.via}<br />{site.indirizzo.cap} {site.indirizzo.citta}</p>
+        </div>
+        <div class="dato">
+          <span class="dato__et">Orari di studio</span>
+          <table class="orari">
+            <tbody>
+              {site.orari.map((o) => (
+                <tr><th scope="row">{o.giorni}</th><td>{o.ore}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="dato">
+          <span class="dato__et">Come arrivare</span>
+          <MappaGate />
+        </div>
+      </div>
+
+      <div>
+        <ContactForm />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contatti { display: grid; gap: clamp(1.75rem, 3.5vw, var(--spazio-5)); grid-template-columns: 1fr; margin-top: var(--spazio-2); }
+  @media (min-width: 900px) { .contatti { grid-template-columns: 1fr 1fr; } }
+
+  .dato { border-top: 1px solid var(--carta-riga); padding-block: 1.1rem; }
+  .dato:first-child { border-top: none; padding-top: 0; }
+  .dato__et { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; color: var(--vermiglio-scuro); display: block; margin-bottom: 0.4em; }
+  .dato__val { font-size: 1.1875rem; color: var(--inchiostro); }
+  .dato__val a { color: var(--inchiostro); display: inline-block; padding-block: 0.45em; min-height: 44px; }
+
+  .orari { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+  .orari th, .orari td { text-align: left; padding: 0.5em 0; border-bottom: 1px solid var(--carta-riga); }
+  .orari th { font-weight: 500; color: var(--grigio-testo); }
+  .orari td { text-align: right; font-variant-numeric: tabular-nums; color: var(--inchiostro); }
+  .orari tr:last-child th, .orari tr:last-child td { border-bottom: none; }
+</style>
