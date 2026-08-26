@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout
   title="Informativa privacy — Gira.Soli"
@@ -144,7 +145,7 @@ import { site } from "../data/site";
         Ultimo aggiornamento: <span class="dato-mancante">[data di approvazione]</span>
       </p>
 
-      <a class="ritorno" href="/">Torna al sito <span aria-hidden="true" class="freccia">→</span></a>
+      <a class="ritorno" href={base}>Torna al sito <span aria-hidden="true" class="freccia">→</span></a>
     </div>
   </div>
 </BaseLayout>

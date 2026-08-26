@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <section class="apertura" id="apertura">
   <div class="wrap apertura__grid">
@@ -32,7 +33,7 @@
     </div>
 
     <div class="vetrina">
-      <img class="vetrina__logo" src="/assets/logo-lockup-300.png" alt="Gira.Soli, Centro Psicologico — il girasole il cui contorno si fonde con il profilo di un bambino" width="220" height="249" />
+      <img class="vetrina__logo" src={`${base}assets/logo-lockup-300.png`} alt="Gira.Soli, Centro Psicologico — il girasole il cui contorno si fonde con il profilo di un bambino" width="220" height="249" />
       <p class="vetrina__didascalia">
         Il girasole è <em>eliotropo</em>: da giovane orienta il capolino verso la luce e la
         segue durante il giorno. Non cresce più in fretta di altre piante — sa dove

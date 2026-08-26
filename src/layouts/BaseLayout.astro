@@ -13,7 +13,8 @@ interface Props {
   noindex?: boolean;
   includeJsonLd?: boolean;
 }
-const { title, description, ogImage = "/assets/og-image.jpg", noindex = false, includeJsonLd = true } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { title, description, ogImage = `${base}assets/og-image.jpg`, noindex = false, includeJsonLd = true } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
@@ -25,7 +26,7 @@ const jsonLd = {
   description:
     "Centro per l'età evolutiva a Roma. Équipe multidisciplinare per la valutazione e il trattamento dei disturbi del neurosviluppo: DSA, ADHD, sostegno psicologico, parent training, neuropsichiatria infantile e psicomotricità.",
   url: site.dominio + "/",
-  logo: new URL("/assets/logo-lockup-300.png", Astro.site).toString(),
+  logo: new URL(`${base}assets/logo-lockup-300.png`, Astro.site).toString(),
   telephone: site.telefonoE164,
   email: site.email,
   address: {
@@ -83,9 +84,9 @@ const jsonLd = {
 <meta name="twitter:image" content={ogImageUrl} />
 
 <meta name="theme-color" content="#0b3d3a" />
-<link rel="icon" href="/assets/icon-192.png" type="image/png" sizes="192x192" />
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
-<link rel="manifest" href="/manifest.json" />
+<link rel="icon" href={`${base}assets/icon-192.png`} type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href={`${base}assets/apple-touch-icon.png`} sizes="180x180" />
+<link rel="manifest" href={`${base}manifest.json`} />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+const base = import.meta.env.BASE_URL;
 ---
 <footer class="piede">
   <div class="wrap">
@@ -26,7 +27,7 @@ import { site } from "../data/site";
           <a href="#percorso">Il percorso</a><br />
           <a href="#servizi">I nove servizi</a><br />
           <a href="#equipe">L'équipe</a><br />
-          <a href="/privacy">Informativa privacy</a>
+          <a href={`${base}privacy`}>Informativa privacy</a>
         </p>
       </div>
     </div>

@@ -1,10 +1,11 @@
 ---
 import { site } from "../data/site";
+const base = import.meta.env.BASE_URL;
 ---
 <header class="testata">
   <div class="wrap testata__inner">
     <a class="marchio" href="#apertura" aria-label={`${site.nome}, torna all'inizio`}>
-      <img src="/assets/logo-lockup-300.png" alt="" width="72" height="81" aria-hidden="true" />
+      <img src={`${base}assets/logo-lockup-300.png`} alt="" width="72" height="81" aria-hidden="true" />
       <span class="marchio__testo">
         <span class="marchio__nome">{site.nome}</span>
         <span class="marchio__sotto">Centro Psicologico</span>
