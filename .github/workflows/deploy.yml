@@ -10,12 +10,14 @@ permissions:
   pages: write
   id-token: write
 
-# false, non true: interrompere un deploy a metà per farne partire un altro
-# è quello che ha lasciato un run in stato "failed" quando due push sono
-# arrivati vicini — meglio accodare e lasciare finire ognuno.
+# true: un run rimasto bloccato in coda (es. un dispatch manuale mai
+# raccolto da un runner) blocca ogni run successivo nello stesso gruppo,
+# anche a distanza di molti minuti — è quello che è successo qui. Un push
+# nuovo deve poter cancellare quello vecchio invece di restare in attesa
+# all'infinito dietro di lui.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
