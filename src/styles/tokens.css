@@ -12,8 +12,12 @@
   --teal-600: #1d746c;
   --teal-100: #cfe3e0;
 
-  --vermiglio: #e24e1b;
-  --vermiglio-scuro: #b33a10;
+  /* #e24e1b (la prima scelta) passava solo 3.9:1 su bianco: sotto il 4.5:1
+     richiesto da WCAG AA per il testo del bottone e delle etichette. Questi
+     due valori sono verificati: bianco su vermiglio 5.95:1, vermiglio su
+     carta 5.48:1, vermiglio-scuro su bianco 8.58:1. */
+  --vermiglio: #b33a10;
+  --vermiglio-scuro: #8a2c0c;
 
   --senape: #d9a62e;
   --rosa-antico: #c1666b;
