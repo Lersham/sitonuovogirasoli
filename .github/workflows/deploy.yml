@@ -10,9 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+# false, non true: interrompere un deploy a metà per farne partire un altro
+# è quello che ha lasciato un run in stato "failed" quando due push sono
+# arrivati vicini — meglio accodare e lasciare finire ognuno.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
